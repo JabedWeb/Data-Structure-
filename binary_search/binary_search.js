@@ -34,8 +34,8 @@ while(beg<=end) {
         end=mid-1
     }
 
-}
 
+}
 //position are found
 if(count!=1){
     console.log("number is not found");
