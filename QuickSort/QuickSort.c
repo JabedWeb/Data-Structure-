@@ -4,10 +4,8 @@ void partition(int array[],int beg,int end);
 
 int main()
 {
-
-
-
     int n;
+    printf("Please input the array length\n");
     scanf("%d",&n);
     int array[n];
 
