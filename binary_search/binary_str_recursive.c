@@ -43,14 +43,15 @@ int find_character(char array[],int beg,int end,char character){
             return mid+1;
         }
         else if (array[mid]<character){
-            beg=mid+1;
-            find_character(array,beg,end,character);
+            find_character(array,mid+1,end,character);
         }
         else{
-            end=mid-1;
-            find_character(array,beg,end,character);
+            find_character(array,beg,mid-1,character);
         }
+    }
+    else{
+        return -1;
     }   
-    return -1;
+  
 }
 
