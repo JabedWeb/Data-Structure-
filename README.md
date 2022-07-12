@@ -4,9 +4,7 @@ I have already coverd so far
 
   | Name | Resources | 
   | --- | --- |
-  [Quick Sort](https://github.com/JabedWeb/Data_Structure/tree/main/QuickSort) | - https://www.youtube.com/watch?v=9eQKdnQRv1k -https://www.youtube.com/watch?v=QN9hnmAgmOc&t=967s |
-  | `git status` | List all *new or modified* files |
-  | `git diff` | Show file differences that **haven't been** staged |
+  [Quick Sort](https://github.com/JabedWeb/Data_Structure/tree/main/QuickSort) | - https://www.youtube.com/watch?v=9eQKdnQRv1k - https://www.youtube.com/watch?v=QN9hnmAgmOc&t=967s |
  - [Binary Search](https://github.com/JabedWeb/Data_Structure/tree/main/binary_search)
  - [Linear Search](https://github.com/JabedWeb/Data_Structure/tree/main/linear_search)
  - [Bubble Sort](https://github.com/JabedWeb/Data_Structure/tree/main/bubble)
