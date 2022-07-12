@@ -1,4 +1,9 @@
 let array=[15,26,37,48,69];
+var prompt = require('prompt-sync')();
+
+let name=prompt("Type name");
+
+console.log(name);
 
 let find=48;
 

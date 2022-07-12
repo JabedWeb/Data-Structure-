@@ -1,3 +1,5 @@
+//
+
 #include<stdio.h>
 int find_character(char array[],int beg,int end,char character);
 
