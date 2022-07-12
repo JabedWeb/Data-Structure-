@@ -5,4 +5,5 @@ I have already coverd so far
  - [Linear Search](https://github.com/JabedWeb/Data_Structure/tree/main/linear_search)
  - [Bubble Sort](https://github.com/JabedWeb/Data_Structure/tree/main/bubble)
  - [Quick Sort](https://github.com/JabedWeb/Data_Structure/tree/main/QuickSort)
- 
+     https://www.youtube.com/watch?v=9eQKdnQRv1k
+ - [Selection Sort](https://github.com/JabedWeb/Data_Structure/tree/main/Selection_Sort)
