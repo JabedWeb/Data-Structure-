@@ -21,6 +21,7 @@ int main()
     }
     return 0;
 }
+//2,11,5,9,45
 void partition(int array[],int beg,int end){
     int tem;
     if(beg<end){
@@ -46,9 +47,11 @@ void partition(int array[],int beg,int end){
 
     }
     tem=array[right];
-    array[right]=array[beg];
-    array[beg]=tem;
-    partition(array,beg,right-1);
-    partition(array,right+1,end);
+    array[right]=array[pivot];
+    array[pivot]=tem;
+    pivot=right;
+
+    partition(array,beg,pivot-1);
+    partition(array,pivot+1,end);
     }
 }
