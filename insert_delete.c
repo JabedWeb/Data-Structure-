@@ -4,7 +4,6 @@ void delete_element();
 
 int main()
 {
-
    printf( "Please choose the option:  \n");
    printf("1 for insert \n2 for delete\n");
    int choose;
