@@ -4,7 +4,6 @@
 int find_character(char array[],int beg,int end,char character);
 
 int main(){
-
     printf("character size\n");
     int n;
     scanf("%d",&n);

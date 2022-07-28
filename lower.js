@@ -4,6 +4,9 @@ const prompt = require("prompt-sync")({ sigint: true });
 // console.log(data.toLowerCase());
 // console.log(data.toUpperCase());
 
+let a ;
+a===6
+
 
 let int = prompt("input Data\n")
 

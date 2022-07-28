@@ -54,4 +54,5 @@ void partition(int array[],int beg,int end){
     partition(array,beg,pivot-1);
     partition(array,pivot+1,end);
     }
+
 }
