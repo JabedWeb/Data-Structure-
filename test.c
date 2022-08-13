@@ -1,7 +1,10 @@
 #include<stdio.h>
-int main()
-{
-    int n=3;
-    printf("%d",n/2);
-    
+
+int main(){
+    int *a=5;
+    int *n=&a;
+    printf("%d\n",*n);
+    printf("%d\n",n);
+    printf("%d\n",&a);
+
 }

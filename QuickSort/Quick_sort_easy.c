@@ -50,7 +50,6 @@ void partition(int array[],int beg,int end){
     array[right]=array[pivot];
     array[pivot]=tem;
     pivot=right;
-
     partition(array,beg,pivot-1);
     partition(array,pivot+1,end);
     }

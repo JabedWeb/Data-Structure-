@@ -64,7 +64,6 @@ if(beg<end) {
 }
 
 partition(array,beg,pivot-1);
-
 partition(array,pivot+1,end);
 
 

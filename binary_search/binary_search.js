@@ -2,7 +2,7 @@
 
 let array=[15,26,37,48,69];
 
-//find the array element
+//find the array element    
 let find=48;
 
 //init variable 
@@ -39,4 +39,7 @@ while(beg<=end) {
 //position are found
 if(count!=1){
     console.log("number is not found");
+}
+if (count!=1){
+    console.log('');
 }
