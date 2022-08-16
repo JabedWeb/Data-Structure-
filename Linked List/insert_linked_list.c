@@ -1,5 +1,4 @@
 //its a final linked list where we can insert data first and last
-
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -89,7 +88,7 @@ void display()
         struct Node *temp=head;
         while (temp->next!=NULL)
         {
-            printf("The note data   %d",temp->data);
+            printf("%d ",temp->data);
             temp=temp->next;
         }
         printf("%d \n",temp->data);
@@ -107,7 +106,7 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert \n2---display \n3-----exits \n");
+        printf("1---insert \n2---display \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -132,7 +131,7 @@ mainmenu :
                     break;
 
                 case 3 :
-                printf("please select the position where you can insert the element");
+                printf("please select the position where you can insert the element\n");
                     scanf("%d",&position);
                     insertAnyPosition(value,position);
                     goto mainmenu;
@@ -144,7 +143,7 @@ mainmenu :
         case 2 :
             display();
             break;
-        case 3 :
+        case 0 :
             exit(0);
         }
     }

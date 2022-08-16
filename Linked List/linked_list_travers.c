@@ -1,28 +1,118 @@
+//its a final linked list where we can insert data first and last
+
 #include<stdio.h>
 #include<stdlib.h>
-struct Node{
+
+struct Node
+{
+
     int data;
     struct Node *next;
-    
 };
-int main(){
-    struct Node *a=NULL;
-    struct Node *b=NULL;
-    struct Node *c=NULL;
-    a=(struct Node*)malloc(sizeof(struct Node));
-    b=(struct Node*)malloc(sizeof(struct Node));
-    c=(struct Node*)malloc(sizeof(struct Node));
-    a->data=10;
-    b->data=20;
-    c->data=30;
-    a->next=b;
-    b->next=c;
-    c->next=NULL;
 
-    //for traverse
+struct Node *head;
 
-    while(a!=NULL){
-        printf("%d ->",a->data);
-        a=a->next;
+void insertFirst(int value)
+{
+    struct Node *newNode;
+    newNode =(struct Node*) malloc(sizeof(struct Node));
+    newNode->data=value;
+    if(head==NULL)
+    {
+
+        newNode->next=NULL;
+        head=newNode;
     }
+    else
+    {
+        newNode->next=head;
+        head=newNode;
+    }
+}
+
+//insert End
+void insertEnd(int value)
+{
+    struct Node *newNode;
+    newNode =(struct Node*) malloc(sizeof(struct Node));
+    newNode->data=value;
+    newNode->next=NULL;
+    if(head==NULL)
+    {
+        head=newNode;
+    }
+    else
+    {
+        struct Node *temp=head;
+        while(temp->next!=NULL)
+        {
+            temp= temp->next;
+        }
+        temp->next=newNode;
+    }
+}
+
+//insert at any position
+
+void insertAnyPosition(int value,int position)
+{
+    struct Node *newNode;
+    newNode=(struct Node*) malloc(sizeof(struct Node));
+    newNode->data=value;
+    if(position==1)
+    {
+        newNode->next=head;
+        head=newNode;
+        return ;
+    }
+    else
+    {
+        struct Node *temp=head;
+        for(int i=0; i<position-2; i++)
+        {
+            temp=temp->next;
+        }
+        newNode->next=temp->next;
+        temp->next=newNode;
+    }
+}                                                             
+
+//display
+void display()
+{
+    if(head==NULL)
+    {
+        printf("empty");
+    }
+    else
+    {
+        struct Node *temp=head;
+        while (temp->next!=NULL)
+        {
+            printf("%d ",temp->data);
+            temp=temp->next;
+        }
+        printf("%d \n",temp->data);
+        printf("\n");
+    }
+
+}
+
+
+int main()
+{
+
+    insertFirst(5);
+    display();
+    printf("\n");
+    insertEnd(10);
+    display();
+    printf("\n");
+    insertAnyPosition(20,2);
+    display();
+    printf("\n");
+    insertAnyPosition(30,2);
+    display();
+    printf("\n");
+    return 0;
 }
