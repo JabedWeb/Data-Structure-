@@ -111,7 +111,7 @@ mainMenu:
         case 0 : 
         exit(0);
         default :
-        printf("wrong choose ,TRY IT AGAIN !!\n");
+        printf("wrong choose ,TRY IT AGAIN !!");
     }
     }
 

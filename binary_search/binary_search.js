@@ -43,3 +43,10 @@ if(count!=1){
 if (count!=1){
     console.log('');
 }
+
+
+jQuery(document).ready(function(){
+        jQuery('.give-embed-receipt').css('background-image', 'url(https://maga.danysden.com/wp-content/uploads/2022/08/bg-form-donate-1-300x300-1.png)');
+ });   
+
+ By clicking "DONATE" I accept Go Fight Win <a href="https://maga.danysden.com/tearms-condition/">terms of use</a> and <a href="https://maga.danysden.com/privacy-policy/">privacy policy</a>

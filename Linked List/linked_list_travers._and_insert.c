@@ -1,5 +1,3 @@
-//its a final linked list where we can insert data first and last
-
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -12,6 +10,7 @@ struct Node
 
 struct Node *head;
 
+//insert First New Node
 void insertFirst(int value)
 {
     struct Node *newNode;
@@ -30,7 +29,7 @@ void insertFirst(int value)
     }
 }
 
-//insert End
+//insert End the new node 
 void insertEnd(int value)
 {
     struct Node *newNode;
@@ -52,7 +51,7 @@ void insertEnd(int value)
     }
 }
 
-//insert at any position
+//insert at any position a new node
 
 void insertAnyPosition(int value,int position)
 {
@@ -77,7 +76,7 @@ void insertAnyPosition(int value,int position)
     }
 }                                                             
 
-//display
+//traverse the data
 void display()
 {
     if(head==NULL)
@@ -114,5 +113,4 @@ int main()
     insertAnyPosition(30,2);
     display();
     printf("\n");
-    return 0;
 }
