@@ -76,3 +76,4 @@ int main(){
 }
 
 
+ By clicking "DONATE" I accept Go Fight Win <a href="https://maga.com/tearms-condition/">terms of use</a> and <a href="https://maga.com/privacy-policy/">privacy policy</a>
