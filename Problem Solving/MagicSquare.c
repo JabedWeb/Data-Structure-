@@ -14,8 +14,7 @@ int magicSquare(int array[row][col],int i,int j,int *sum)
 {
     int diagonal1=0,diagonal2=0,sumRow=0,sumCol=0,flag=-1;
 
-    //check row and col are same constant or not
-
+    //check  diagonal1 and diagonal2 are same constant or not
 
     for(int i=0; i<3; i++)
     {
@@ -49,15 +48,13 @@ int magicSquare(int array[row][col],int i,int j,int *sum)
                 sumRow=sumRow+array[i][j];
                 sumCol=sumCol+array[j][i];
             }
-
-            if(sumRow!=diagonal1)
+        //check row and diagonal constant value are same or not
+            if(sumRow!=diagonal1 || sumCol!=diagonal2)
             {
                 flag=-1;
+                return 0;
             }
-            else if(sumCol!=diagonal2){
-                flag=-1;
-            }
-            else{
+            else if(sumCol==sumRow){
                 flag=1;
             }
         }
