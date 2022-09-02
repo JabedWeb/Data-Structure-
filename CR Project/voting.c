@@ -109,6 +109,36 @@ void search()
     }
 }
 
+// sorting
+
+ void sorting()
+    {
+        struct Node* temp = head;
+        int c = 1;
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+            c++;
+        }
+        temp = head;
+        char x[100];
+        for(int i=0;i<c;i++)
+        {
+            temp = head;
+            while(temp->next != NULL)
+            {
+                if(strcmp(temp->name,temp->next->name) > 0)
+                {
+                    strcpy(x,temp->name);
+                    strcpy(temp->name,temp->next->name);
+                    strcpy(temp->next->name,x);
+                }
+                temp = temp->next;
+            }
+        }
+    }
+    
+
 //display
 void display()
 {
@@ -145,7 +175,7 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of voters \n2---display \n3---search \n0-----exits \n");
+        printf("1---insert the name of voters \n2---display \n3---search  \n4---sorting \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -184,6 +214,8 @@ mainmenu :
             break;
         case 3 :
             search();
+        case 4 :
+            sorting();    
             break;
         case 0 :
             exit(0);

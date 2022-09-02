@@ -10,6 +10,7 @@
 struct Node
 {
     char name[30];
+    int VoteCus;
     struct Node *next;
 };
 
@@ -32,7 +33,7 @@ void insertFirst(char data[30])
     }
 }
 
-//insert End
+//insert end
 void insertEnd(char data[30])
 {
     struct Node *newNode;
@@ -54,7 +55,8 @@ void insertEnd(char data[30])
     }
 }
 
-//insert at any position
+
+//insert any position
 
 void insertAnyPosition(char data[30],int position)
 {
@@ -79,65 +81,68 @@ void insertAnyPosition(char data[30],int position)
     }
 }
 
-//search
-
-void search()
-{
-    char data[30];
-    printf("search the name\n");
-    fgets(data,sizeof(data),stdin);
+void calculatingVote(int position){
     struct Node *temp=head;
-    int count=1;
-    while(temp->next!=NULL)
+
+
+    if(position==1)
     {
-        if(strcmp(temp->name, data) == 0)
-        {
-            printf("Candidate is found %s in place of %d\n",temp->name,count);
-            return;
-        }
-        temp=temp->next;
-        count++;
-    }
-    //last node check
-    if(strcmp(temp->name, data) == 0)
-    {
-        printf("Candidate is found %s in place of %d \n",temp->name,count);
+        temp->VoteCus++;
     }
     else
     {
-        printf("Candidate is not found");
-    }
-}
-
-// sorting
-
- void sorting()
-    {
-        struct Node* temp = head;
-        int c = 1;
-        while(temp->next != NULL)
+        for(int i=2; i< position; i++)
         {
-            temp = temp->next;
-            c++;
-        }
-        temp = head;
-        char x[100];
-        for(int i=0;i<c;i++)
-        {
-            temp = head;
-            while(temp->next != NULL)
+            if(temp->next!=NULL)
             {
-                if(strcmp(temp->name,temp->next->name) > 0)
-                {
-                    strcpy(x,temp->name);
-                    strcpy(temp->name,temp->next->name);
-                    strcpy(temp->next->name,x);
-                }
                 temp = temp->next;
             }
         }
+        temp->VoteCus++;
     }
-    
+}
+
+//delete first
+
+void delete_First ()
+{
+    head = head->next;
+}
+
+void delete_End ()
+{
+    struct Node* temp = head;
+    while(temp->next->next!=NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+}
+
+void deleteAtAnyPosition(int position)
+{
+    struct Node* temp = head;
+
+    if(position==1)
+    {
+        head=temp->next->next;
+        return ;
+    }
+    else
+    {
+        for(int i=2; i< position; i++)
+        {
+            if(temp->next!=NULL)
+            {
+                temp = temp->next;
+            }
+        }
+        temp->next = temp->next->next;
+    }
+
+}
+
+
 
 //display
 void display()
@@ -156,11 +161,11 @@ void display()
         struct Node *temp=head;
         while (temp->next!=NULL)
         {
-            printf("================   %d.%s ================\n",count,temp->name);
+            printf("================   %d.%s  ==vote %d================\n",count,temp->name,temp->VoteCus);
             temp=temp->next;
             count++;
         }
-        printf("================   %d.%s ================\n",count,temp->name);
+        printf("================   %d.%s  ==vote %d================\n",count,temp->name,temp->VoteCus);
         printf("\n");
     }
 }
@@ -175,7 +180,7 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of voters \n2---display \n3---search  \n4---sorting \n0-----exits \n");
+        printf("1---insert the name of voters \n2---Display \n3---CalculatingVote \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -213,13 +218,22 @@ mainmenu :
             display();
             break;
         case 3 :
-            search();
-        case 4 :
-            sorting();    
+        printf("select 1 for vote 2 for view result\n");
+        scanf("%d",&target);
+        if(target==1){
+            while(1){
+                printf("whom do you want to vote ?\n");
+                scanf("%d",&position);
+                calculatingVote(position);
+            }
+        }
+        else{
             break;
+        }
         case 0 :
             exit(0);
         }
     }
 
 }
+

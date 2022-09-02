@@ -32,7 +32,7 @@ void insertFirst(char data[30])
     }
 }
 
-//insert End
+//insert end
 void insertEnd(char data[30])
 {
     struct Node *newNode;
@@ -54,7 +54,8 @@ void insertEnd(char data[30])
     }
 }
 
-//insert at any position
+
+//insert any position
 
 void insertAnyPosition(char data[30],int position)
 {
@@ -79,65 +80,47 @@ void insertAnyPosition(char data[30],int position)
     }
 }
 
-//search
+//delete first
 
-void search()
+void delete_First ()
 {
-    char data[30];
-    printf("search the name\n");
-    fgets(data,sizeof(data),stdin);
-    struct Node *temp=head;
-    int count=1;
-    while(temp->next!=NULL)
+    head = head->next;
+}
+
+void delete_End ()
+{
+    struct Node* temp = head;
+    while(temp->next->next!=NULL)
     {
-        if(strcmp(temp->name, data) == 0)
-        {
-            printf("Candidate is found %s in place of %d\n",temp->name,count);
-            return;
-        }
-        temp=temp->next;
-        count++;
+        temp = temp->next;
     }
-    //last node check
-    if(strcmp(temp->name, data) == 0)
+    temp->next = NULL;
+}
+
+void deleteAtAnyPosition(int position)
+{
+    struct Node* temp = head;
+
+    if(position==1)
     {
-        printf("Candidate is found %s in place of %d \n",temp->name,count);
+        head=temp->next->next;
+        return ;
     }
     else
     {
-        printf("Candidate is not found");
-    }
-}
-
-// sorting
-
- void sorting()
-    {
-        struct Node* temp = head;
-        int c = 1;
-        while(temp->next != NULL)
+        for(int i=2; i< position; i++)
         {
-            temp = temp->next;
-            c++;
-        }
-        temp = head;
-        char x[100];
-        for(int i=0;i<c;i++)
-        {
-            temp = head;
-            while(temp->next != NULL)
+            if(temp->next!=NULL)
             {
-                if(strcmp(temp->name,temp->next->name) > 0)
-                {
-                    strcpy(x,temp->name);
-                    strcpy(temp->name,temp->next->name);
-                    strcpy(temp->next->name,x);
-                }
                 temp = temp->next;
             }
         }
+        temp->next = temp->next->next;
     }
-    
+
+}
+
+
 
 //display
 void display()
@@ -175,7 +158,7 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of voters \n2---display \n3---search  \n4---sorting \n0-----exits \n");
+        printf("1---insert the name of voters \n2---delete \n3---display \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -209,13 +192,35 @@ mainmenu :
                     goto mainmenu;
                 }
             }
-        case 2 :
-            display();
-            break;
+        case 2:
+            while(1)
+            {
+                printf("1---DeleteFirst \n2---DeleteEnd \n3--DeleteAnyPosition \n");
+                scanf("%d",&target);
+                switch(target)
+                {
+                case 1 :
+                    delete_First(name);
+                    goto mainmenu;
+                    break;
+
+                case 2 :
+                    delete_End(name);
+                    goto mainmenu;
+                    break;
+
+                case 3 :
+                    printf("please select the position where you can delete the Elements the element\n");
+                    scanf("%d",&position);
+                    deleteAtAnyPosition(position);
+                    goto mainmenu;
+                    break;
+                default :
+                    goto mainmenu;
+                }
+            }
         case 3 :
-            search();
-        case 4 :
-            sorting();    
+            display();
             break;
         case 0 :
             exit(0);
@@ -223,3 +228,4 @@ mainmenu :
     }
 
 }
+

@@ -3,5 +3,8 @@
         "mainmenu",
         "Thsi",
         "wonderfull"
-    ]
+    ],
+    "files.associations": {
+        "votecalculate": "c"
+    }
 }
