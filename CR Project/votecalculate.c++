@@ -1,7 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include <conio.h>
+#include <bits/stdc++.h>
+using namespace std;
 
 /*
  all insertion function for candidate
@@ -10,7 +8,7 @@
 struct Node
 {
     char name[30];
-    int VoteCus;
+    int VoteCus=0;
     struct Node *next;
 };
 
@@ -143,6 +141,12 @@ void deleteAtAnyPosition(int position)
 }
 
 
+void winner(){
+   struct Node *i,*j;
+   int temp;
+   
+}
+
 
 //display
 void display()
@@ -218,18 +222,22 @@ mainmenu :
             display();
             break;
         case 3 :
-        printf("select 1 for vote 2 for view result\n");
+        while(1){
+        secondMenu:
+        printf("select 1 for vote 2 for main menu\n");
         scanf("%d",&target);
         if(target==1){
-            while(1){
-                printf("whom do you want to vote ?\n");
-                scanf("%d",&position);
-                calculatingVote(position);
-            }
+            printf("whom do you want to vote ?\n");
+            scanf("%d",&position);
+            calculatingVote(position);
+            goto secondMenu;
         }
         else{
+            goto mainmenu;
             break;
         }
+        }
+
         case 0 :
             exit(0);
         }
