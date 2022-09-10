@@ -14,6 +14,7 @@ struct Node
 
 struct Node *head;
 
+//insert first
 void insertFirst(char data[30])
 {
     struct Node *newNode;
@@ -55,7 +56,6 @@ void insertEnd(char data[30])
 
 
 //insert any position
-
 void insertAnyPosition(char data[30],int position)
 {
     struct Node *newNode;
@@ -79,34 +79,26 @@ void insertAnyPosition(char data[30],int position)
     }
 }
 
+
+//calculating vote 
 void calculatingVote(int position){
     struct Node *temp=head;
-
-
-    if(position==1)
-    {
-        temp->VoteCus++;
-    }
-    else
-    {
-        for(int i=2; i< position; i++)
+        for(int i=1; i< position; i++)
         {
-            if(temp->next!=NULL)
-            {
-                temp = temp->next;
-            }
+            temp = temp->next;
         }
         temp->VoteCus++;
-    }
 }
 
-//delete first
 
+//delete first
 void delete_First ()
 {
     head = head->next;
 }
 
+
+//delete end
 void delete_End ()
 {
     struct Node* temp = head;
@@ -117,6 +109,8 @@ void delete_End ()
     temp->next = NULL;
 }
 
+
+//delete at any postion
 void deleteAtAnyPosition(int position)
 {
     struct Node* temp = head;
@@ -165,6 +159,52 @@ void display()
         struct Node *temp=head;
         while (temp->next!=NULL)
         {
+            printf("================   %d.%s \n",count,temp->name);
+            temp=temp->next;
+            count++;
+        }
+            printf("================   %d.%s  \n",count,temp->name);
+        printf("\n");
+    }
+}
+
+
+
+//display
+void ResultDisplay()
+{
+    //insertion sort for winner sorting
+    struct Node *i,*j;
+   int tempData;
+   char name[100];
+
+   for(i=head;i->next!=NULL;i=i->next){
+     for(j=i->next;j!=NULL;j=j->next){
+        if(i->VoteCus<j->VoteCus){
+            tempData=i->VoteCus;
+            i->VoteCus=j->VoteCus;
+            j->VoteCus=tempData;
+            strcpy(name,i->name);
+            strcpy(i->name,j->name);
+            strcpy(j->name,name);
+        }
+     }
+   }
+   //result show 
+    if(head==NULL)
+    {
+        printf("empty");
+    }
+    else
+    {
+        int count=1;
+        printf("*********Welcome to the voting system project*********\n\n");
+        printf("                        CR election                        \n\n");
+        printf("*************************************************************\n");
+
+        struct Node *temp=head;
+        while (temp->next!=NULL)
+        {
             printf("================   %d.%s  ==vote %d================\n",count,temp->name,temp->VoteCus);
             temp=temp->next;
             count++;
@@ -173,6 +213,8 @@ void display()
         printf("\n");
     }
 }
+
+
 
 
 int main()
@@ -224,12 +266,16 @@ mainmenu :
         case 3 :
         while(1){
         secondMenu:
-        printf("select 1 for vote 2 for main menu\n");
+        printf("select 1 for vote \n2 for viewResult \n3 for main menu\n");
         scanf("%d",&target);
         if(target==1){
             printf("whom do you want to vote ?\n");
             scanf("%d",&position);
             calculatingVote(position);
+            goto secondMenu;
+        }
+        else if (target==2){
+            ResultDisplay();
             goto secondMenu;
         }
         else{
