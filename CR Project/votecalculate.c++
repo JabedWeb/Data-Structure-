@@ -301,7 +301,7 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of candidates \n2---Display \n3---CalculatingVote \n0-----exits \n");
+        printf("1---insert the name of candidates \n2--- Delete \n3---Display \n4---CalculatingVote \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
@@ -335,10 +335,41 @@ mainmenu :
                     goto mainmenu;
                 }
             }
-        case 2 :
+
+            case 2:
+            while(1)
+            {
+                printf("1---DeleteFirst \n2---DeleteEnd \n3--DeleteAnyPosition \n");
+                scanf("%d",&target);
+                switch(target)
+                {
+                case 1 :
+                    delete_First();
+                    goto mainmenu;
+                    break;
+
+                case 2 :
+                    delete_End();
+                    goto mainmenu;
+                    break;
+
+                case 3 :
+                    printf("please select the position where you can delete the Elements the element\n");
+                    scanf("%d",&position);
+                    deleteAtAnyPosition(position);
+                    goto mainmenu;
+                    break;
+                default :
+                    goto mainmenu;
+                }
+            }
+
+
+
+        case 3 :
             display();
             break;
-        case 3 :
+        case 4 :
             while(1)
             {
 secondMenu:
