@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -129,7 +127,7 @@ void deleteAtAnyPosition(int position)
 
 /*
 
-It is candidate name display function 
+It is candidate name display function
 */
 void display()
 {
@@ -140,7 +138,7 @@ void display()
     else
     {
         int count=1;
-        printf("*********Welcome to the voting system project*********\n\n");
+        printf("********* Welcome to the CR Voting System project *********\n\n");
         printf("                        CR election                        \n\n");
         printf("*************************************************************\n");
 
@@ -261,15 +259,21 @@ void individualResult()
     }
 }
 
+
+/*
+In this function we can find out who is the winner of this Cr Voting election
+*/
 void winner()
 {
-    
+
     struct Node * temp=head;
 
     int max=-1;
 
-    while(temp!=NULL){
-        if(max<temp->VoteCus){
+    while(temp!=NULL)
+    {
+        if(max<temp->VoteCus)
+        {
             max=temp->VoteCus;
         }
         temp=temp->next;
@@ -286,6 +290,7 @@ void winner()
             printf("The Winner Total Vote %d\n",temp->VoteCus);
             printf("The Winner percentage vote %d%c \n",per,37);
             printf("Thank you all for the participating ");
+            printf("========================================");
             exit(0);
         }
         temp=temp->next;
@@ -301,17 +306,17 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of candidates \n2--- Delete \n3---Display \n4---CalculatingVote \n0-----exits \n");
+        printf("Press 1 for insert the name of candidates \nPress 2 for Delete \nPress 3 for Display Candidate Name \nPress 4 for CalculatingVote \nPress 0 for exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
         case 1:
-            printf("insert candidate Name\n");
+            printf("Insert candidate Name\n");
             fflush(stdin);
             fgets(name, sizeof(name), stdin);
             while(1)
             {
-                printf("1---insertFirst \n2---insertEnd \n3--insertAnyPosition \n");
+                printf("Press 1 for InsertFirst \nPress 2 for InsertEnd \nPress 3 for InsertAnyPosition \n");
                 scanf("%d",&target);
                 switch(target)
                 {
@@ -336,10 +341,10 @@ mainmenu :
                 }
             }
 
-            case 2:
+        case 2:
             while(1)
             {
-                printf("1---DeleteFirst \n2---DeleteEnd \n3--DeleteAnyPosition \n");
+                printf("Press 1 for DeleteFirst \nPress 2 for DeleteEnd \n Press 3 for DeleteAnyPosition \n");
                 scanf("%d",&target);
                 switch(target)
                 {
@@ -354,7 +359,7 @@ mainmenu :
                     break;
 
                 case 3 :
-                    printf("please select the position where you can delete the Elements the element\n");
+                    printf("Please select the position where you can delete the Elements the element\n");
                     scanf("%d",&position);
                     deleteAtAnyPosition(position);
                     goto mainmenu;
@@ -373,7 +378,7 @@ mainmenu :
             while(1)
             {
 secondMenu:
-                printf("1 for vote \n2 for viewResult \n3 for individual result \n4 for winner \n5 for main menu\n");
+                printf("Press 1 for vote \nPress 2 for view Result \nPress 3 for individual result \nPress 4 for winner \nPress 5 for main menu\n");
                 scanf("%d",&target);
                 if(target==1)
                 {
