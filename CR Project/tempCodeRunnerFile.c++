@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -13,8 +11,6 @@ struct Node
     int VoteCus=0;
     struct Node *next;
 };
-
-int totalVote=0;
 
 struct Node *head;
 
@@ -127,10 +123,7 @@ void deleteAtAnyPosition(int position)
 
 }
 
-/*
-
-It is candidate name display function 
-*/
+//display
 void display()
 {
     if(head==NULL)
@@ -151,7 +144,7 @@ void display()
             temp=temp->next;
             count++;
         }
-        printf("================   %d.%s  \n",count,temp->name);
+            printf("================   %d.%s  \n",count,temp->name);
         printf("\n");
     }
 }
@@ -159,48 +152,40 @@ void display()
 
 
 
-/*
-It is Calculating function
-*/
-void calculatingVote(int position)
-{
+//calculating vote 
+void calculatingVote(int position){
     struct Node *temp=head;
-    for(int i=1; i< position; i++)
-    {
-        temp = temp->next;
-    }
-    totalVote++;
-    temp->VoteCus++;
+        for(int i=1; i< position; i++)
+        {
+            temp = temp->next;
+        }
+        temp->VoteCus++;
 }
 
 
-/*
-Here is insertion sorting Data structure
-It is result Display function
-*/
+//display
 void ResultDisplay()
 {
+    // printf("The Winner is : ");
+    
+    //insertion sort for winner sorting
+   struct Node *i,*j;
+   int tempData;
+   char name[100];
 
-    struct Node *i,*j;
-    int tempData;
-    char name[100];
-
-    for(i=head; i->next!=NULL; i=i->next)
-    {
-        for(j=i->next; j!=NULL; j=j->next)
-        {
-            if(i->VoteCus<j->VoteCus)
-            {
-                tempData=i->VoteCus;
-                i->VoteCus=j->VoteCus;
-                j->VoteCus=tempData;
-                strcpy(name,i->name);
-                strcpy(i->name,j->name);
-                strcpy(j->name,name);
-            }
+   for(i=head;i->next!=NULL;i=i->next){
+     for(j=i->next;j!=NULL;j=j->next){
+        if(i->VoteCus<j->VoteCus){
+            tempData=i->VoteCus;
+            i->VoteCus=j->VoteCus;
+            j->VoteCus=tempData;
+            strcpy(name,i->name);
+            strcpy(i->name,j->name);
+            strcpy(j->name,name);
         }
-    }
-    //result show
+     }
+   }
+   //result show 
     if(head==NULL)
     {
         printf("empty");
@@ -215,82 +200,17 @@ void ResultDisplay()
         struct Node *temp=head;
         while (temp->next!=NULL)
         {
-            printf(" %d.%s  == Total vote ================ %d\n",count,temp->name,temp->VoteCus);
+            printf("================   %d.%s  ==vote %d ================",count,temp->name,temp->VoteCus);
             temp=temp->next;
             count++;
         }
-        printf(" %d.%s  == Total vote ================ %d\n",count,temp->name,temp->VoteCus);
-
+        printf("\n================   %d.%s  ==vote %d ================\n",count,temp->name,temp->VoteCus);
+        printf("\n");
     }
 }
 
 
-/*
-Here is search linear search Data structure
-It is individual result function
-*/
-void individualResult()
-{
-    printf("Welcome to Individual Result\n");
-    char data[30];
-    printf("search the name\n");
-    fflush(stdin);
-    fgets(data,sizeof(data),stdin);
-    struct Node *temp=head;
-    while(temp->next!=NULL)
-    {
-        if(strcmp(temp->name, data) == 0)
-        {
-            printf("Candidate is found\n");
-            printf("Candidate Name is    %s\n",temp->name);
-            printf("Candidate Total Vote %d\n",temp->VoteCus);
-            return;
-        }
-        temp=temp->next;
-    }
-    //last node check
-    if(strcmp(temp->name, data) == 0)
-    {
-        printf("Candidate is found\n");
-        printf("Candidate Name is    %s\n",temp->name);
-        printf("Candidate Total Vote %d\n",temp->VoteCus);
-    }
-    else
-    {
-        printf("Candidate is not found");
-    }
-}
 
-void winner()
-{
-    
-    struct Node * temp=head;
-
-    int max=-1;
-
-    while(temp!=NULL){
-        if(max<temp->VoteCus){
-            max=temp->VoteCus;
-        }
-        temp=temp->next;
-    }
-
-    temp=head;
-    while(temp!=NULL)
-    {
-        if(temp->VoteCus==max)
-        {
-            int per=(temp->VoteCus*100)/totalVote;
-            printf("==========Congratulations  %s============\n",temp->name);
-            printf("The CR Winner name is %s\n",temp->name);
-            printf("The Winner Total Vote %d\n",temp->VoteCus);
-            printf("The Winner percentage vote %d%c \n",per,37);
-            printf("Thank you all for the participating ");
-            exit(0);
-        }
-        temp=temp->next;
-    }
-}
 
 int main()
 {
@@ -301,12 +221,12 @@ int main()
     while(1)
     {
 mainmenu :
-        printf("1---insert the name of candidates \n2---Display \n3---CalculatingVote \n0-----exits \n");
+        printf("1---insert the name of voters \n2---Display \n3---CalculatingVote \n0-----exits \n");
         scanf("%d",&choice);
         switch (choice)
         {
         case 1:
-            printf("insert candidate Name\n");
+            printf("insert student Name\n");
             fflush(stdin);
             fgets(name, sizeof(name), stdin);
             while(1)
@@ -339,40 +259,26 @@ mainmenu :
             display();
             break;
         case 3 :
-            while(1)
-            {
-secondMenu:
-                printf("1 for vote \n2 for viewResult \n3 for individual result \n4 for winner \n5 for main menu\n");
-                scanf("%d",&target);
-                if(target==1)
-                {
-                    display();
-                    printf("whom do you want to vote ?\n");
-                    scanf("%d",&position);
-                    calculatingVote(position);
-                    goto secondMenu;
-                }
-                else if (target==2)
-                {
-                    ResultDisplay();
-                    goto secondMenu;
-                }
-                else if (target==3)
-                {
-                    individualResult();
-                    goto secondMenu;
-                }
-                else if (target==4)
-                {
-                    winner();
-                    goto secondMenu;
-                }
-                else
-                {
-                    goto mainmenu;
-                    break;
-                }
-            }
+        while(1){
+        secondMenu:
+        printf("select 1 for vote \n2 for viewResult \n3 for main menu\n");
+        scanf("%d",&target);
+        if(target==1){
+            display();
+            printf("whom do you want to vote ?\n");
+            scanf("%d",&position);
+            calculatingVote(position);
+            goto secondMenu;
+        }
+        else if (target==2){
+            ResultDisplay();
+            goto secondMenu;
+        }
+        else{
+            goto mainmenu;
+            break;
+        }
+        }
 
         case 0 :
             exit(0);
@@ -380,3 +286,4 @@ secondMenu:
     }
 
 }
+
